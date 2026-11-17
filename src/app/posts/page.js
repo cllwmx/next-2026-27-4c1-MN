@@ -1,18 +1,15 @@
 async function getPosts() {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5', {
-  cache: 'no-store',
-});
-
+    cache: 'no-store',
+  });
 
   if (!res.ok) {
     throw new Error('Nie udało się pobrać danych');
   }
-  return res.json();
-
   
+  return res.json();
 }
 
-const res = await fetch(url, { next: { revalidate: 60 } });
 export default async function PostsPage() {
   const posts = await getPosts();
 
